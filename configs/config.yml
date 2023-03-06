@@ -1,0 +1,41 @@
+#Logging configuration
+cvm:
+  cvm_url: 'https://dados.cvm.gov.br/dados/FI/DOC/CDA/DADOS/cda_fi_202212.zip'
+
+s3:
+  access_key: 'AWS_ACCESS_KEY_ID'
+  secret_key: 'AWS_SECRET_ACCESS_KEY'
+  default_region: 'AWS_DEFAULT_REGION'
+  trg_endpoint_url: 'https://s3.sa-east-1.amazonaws.com'
+  trg_bucket: 'douglas-xetra-project'
+
+transformer_args:
+  denom_social: 'DENOM_SOCIAL'
+  cnpj_fundo: 'CNPJ_FUNDO'
+  percentual_ativo: 'PERCENTUAL_ATIVO'
+  vl_mercado: 'VL_MERC_POS_FINAL'
+  vl_mercado_x: 'VL_MERC_POS_FINAL_x'
+  vl_mercado_y: 'VL_MERC_POS_FINAL_y'
+  columns_filtred: ['CNPJ_FUNDO', 'TP_ATIVO','VL_MERC_POS_FINAL_x', 'VL_MERC_POS_FINAL_y','PERCENTUAL_ATIVO']
+  columns_renamed: ['CNPJ_FUNDO', 'TP_ATIVO','VL_MERC_POS_FINAL', 'VL_MERC_FUNDO','PERCENTUAL_ATIVO']
+  gb_cnpj_ativo: ['CNPJ_FUNDO', 'TP_ATIVO']
+  vl_mercado_fundo: 'VL_MERC_FUNDO'
+  tp_ativo: 'TP_ATIVO'
+
+target:
+  trg_key: 'cda_fi_BLC_'
+  trg_format: '.parquet'
+
+logging:
+  version: 1
+  formatters: 
+    xetra:
+      format: "Xetra Tranformer - %(asctime)s - %(levelname)s - %(message)s"
+  handlers:
+    console:
+      class: logging.StreamHandler
+      formatter: xetra
+      level: DEBUG
+  root:
+    level: DEBUG
+    handlers: [console]   
