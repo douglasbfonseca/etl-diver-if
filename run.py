@@ -29,7 +29,11 @@ def main():
     cvm_config = config['cvm']
     s3_config = config['s3']
     # creating the CVM and S3BucketConnector class instances for source and target
-    cvm_connector = CvmConnector(cvm_url=cvm_config['cvm_url'])
+    cvm_connector = CvmConnector(cvm_url=cvm_config['cvm_url'],
+                                 file_format=cvm_config['file_format'],
+                                 prefix_name=cvm_config['prefix_name'],
+                                 year=cvm_config['year'],
+                                 month=cvm_config['month'])
     s3_bucket_trg = S3BucketConnector(access_key=s3_config['access_key'],
                                       secret_key=s3_config['secret_key'],
                                       default_region=s3_config['default_region'],
