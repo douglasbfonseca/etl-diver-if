@@ -30,7 +30,12 @@ class CvmConnector():
     
     def get_csv_file(self, zip_file, i):
         """
-        
+        Get a CSV file from the Zipfile downloaded
+
+        :param zip_file: zipfile with all CSV files
+
+        returns:
+            Pandas DataFrame
         """
         with ZipFile(BytesIO(zip_file.content)) as zip_file:
             csv_name = self._prefix_name + str(i) + '_' + self._year + self._month + '.csv'
@@ -40,7 +45,10 @@ class CvmConnector():
 
     def dowload_zip_file(self):
         """
-        Zipfile requester 
+        Zipfile requester
+
+        returns:
+            zipfile with all CSV files
         """
         url = self._cvm_url + self._year + self._month + self._file_format
         zip_file = requests.get(url)
