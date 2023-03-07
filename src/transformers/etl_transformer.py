@@ -118,12 +118,21 @@ class FundosDiverETL():
         return data_frame
 
     def load(self, data_frame):
+        """
+        Load data to the S3 bucket
+
+        :param data_frame: Transformed Pandas Data Frame
+        """
+
         key = self.trg_args.trg_key + datetime.today().strftime('%Y-%m-%d_%H%M%S') + self.trg_args.trg_format
         self.s3_bucket_trg.write_df_to_s3(data_frame, key)
         self._logger.info('Target data successfully written.')
         return True
 
     def etl_report(self):
+        """
+        ETL funcion, calls extract, transform and load
+        """
         data_frame = self.extract()
         data_frame = self.transform(data_frame)
         self.load(data_frame)

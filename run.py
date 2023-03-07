@@ -12,7 +12,7 @@ from src.transformers.etl_transformer import FundosDiverETL, TransformerConfig, 
 
 def main():
     """
-      entry point to run the ETL job
+      Entry point to run the ETL job
     """
     # Parsing YAML file
     parser = argparse.ArgumentParser(description='Run the ETL job.')

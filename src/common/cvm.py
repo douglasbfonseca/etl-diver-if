@@ -15,7 +15,11 @@ class CvmConnector():
         """
         Constructor for CvmConnector
 
-        :param cvm_url: Url to CVM source of data. A Zipfile.
+        :param cvm_url: url to CVM source of data.
+        :param file_format: format of source data.
+        :param prefix_name: prefix of the CSV file.
+        :param year: data year 
+        :param month: data month
         """
         self._logger = logging.getLogger(__name__)
         self._cvm_url = cvm_url
@@ -26,7 +30,12 @@ class CvmConnector():
     
     def get_csv_file(self, zip_file, i):
         """
-        
+        Get a CSV file from the Zipfile downloaded
+
+        :param zip_file: zipfile with all CSV files
+
+        returns:
+            Pandas DataFrame
         """
         with ZipFile(BytesIO(zip_file.content)) as zip_file:
             csv_name = self._prefix_name + str(i) + '_' + self._year + self._month + '.csv'
@@ -36,7 +45,10 @@ class CvmConnector():
 
     def dowload_zip_file(self):
         """
-        Zipfile requester 
+        Zipfile requester
+
+        returns:
+            zipfile with all CSV files
         """
         url = self._cvm_url + self._year + self._month + self._file_format
         zip_file = requests.get(url)
