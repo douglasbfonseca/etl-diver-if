@@ -15,7 +15,11 @@ class CvmConnector():
         """
         Constructor for CvmConnector
 
-        :param cvm_url: Url to CVM source of data. A Zipfile.
+        :param cvm_url: url to CVM source of data.
+        :param file_format: format of source data.
+        :param prefix_name: prefix of the CSV file.
+        :param year: data year 
+        :param month: data month
         """
         self._logger = logging.getLogger(__name__)
         self._cvm_url = cvm_url
