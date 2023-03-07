@@ -33,7 +33,6 @@ class TransformerConfig(NamedTuple):
     vl_mercado_x: str
     vl_mercado_y: str
     columns_filtred: list[str]
-    columns_renamed: list[str]
     gb_cnpj_ativo: list[str]
     vl_mercado_fundo: str
     tp_ativo: str
@@ -81,7 +80,7 @@ class FundosDiverETL():
             Aggregated Pandas DataFrame with all source data
         """
         zip_file = self.cvm_src.dowload_zip_file()
-        data_frame = pd.concat([self.cvm_src.get_csv_file(zip_file, i) for i in range(1,3)])
+        data_frame = pd.concat([self.cvm_src.get_csv_file(zip_file, i) for i in range(1,9)])
         self._logger.info('Extracting CVM source files finished.')
         return data_frame
 
