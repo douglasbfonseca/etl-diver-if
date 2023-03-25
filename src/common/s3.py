@@ -16,6 +16,7 @@ class S3BucketConnector():
 
         :param access_key: access key for accessing S3
         :param secret_key: secret key for accessing S3
+        :param default_region: region of the S3 bucket
         :param endpoint_url: endpoint to S3
         :param bucket: S3 bucket name
         """
@@ -31,8 +32,7 @@ class S3BucketConnector():
         """
         Write the Data Frame to the S3 Bucket
 
-        :param bucket: access key for accessing S3
-        :param out_buffer: BytesIO, formart that should be written
+        :param df: Pandas DataFrame that should be written
         :param key: target key of saved file
 
         returns:
@@ -46,6 +46,9 @@ class S3BucketConnector():
         """
         Helper funcion for write_df_to_s3(), for logging informations
         
+        # this methot could be skipped
+        # I've created only for logging informations and error handling in future
+
         :param out_buffer: BytesIO, formart that should be written
         :param key: target key of saved file
         """
