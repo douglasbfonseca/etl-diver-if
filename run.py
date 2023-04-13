@@ -1,4 +1,4 @@
-"""Running the Xetra ETL application"""
+"""Running the ETL application"""
 import argparse
 import logging
 import logging.config
