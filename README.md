@@ -1,7 +1,6 @@
 ### ETL de diversificação dos fundos de investimento
 
 #### Resumo
-Projeto pessoal de ETL com fins de desenvolvimento profissional.
 
 A fonte de dados é o portal de dados abertos da CVM (https://dados.cvm.gov.br/)
 
