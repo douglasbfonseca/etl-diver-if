@@ -1,12 +1,12 @@
-### ETL de diversificação dos fundos de investimento
+### Diversification of investment funds ETL job
 
-#### Resumo
+#### Abstract
 
-A fonte de dados é o portal de dados abertos da CVM (https://dados.cvm.gov.br/)
+The data source is CVM open data portal (https://dados.cvm.gov.br/)
 
-A transformação calcula a diversificação do fundos de investimento, trazendo o percentual de paticipação de cada ativo.
+The transformation calculates the diversification of investment funds, bringing the percentage of ownership of each asset.
 
-O destino é um S3 bucket AWS
+The target is a S3 bucket AWS
 
-#### Rodando
+#### Running
 python -m run ...\configs\config.yml
